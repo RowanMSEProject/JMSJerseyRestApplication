@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Delete a User</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script type="text/javascript" src="https://localhost:8443/owf/js-min/owf-widget-debug.js"></script>
+        <script type="text/javascript">
+            function broadcast(form) {
+                alert("Typed " + createForm.username.value);
+                return true;
+            }
+
+            function gen( ) {
+                return "true";
+            }
+
+            function message( ) {
+                value = "" + gen();
+                OWF.Eventing.publish("DBchanged", value);
+                return true;
+            }
+
+        </script>
+    </head>
+    <body>
+        <h2> Delete User </h2>
+        <form onsubmit="return message()" action="https://localhost:8181/JMSJerseyRestApplication/webresources/entities.login/rm" method="POST">
+            User Id: <input type="text" name="userid"> <br>
+            <input type="submit" value="Delete">
+        </form> 
+    </body>
+</html>
